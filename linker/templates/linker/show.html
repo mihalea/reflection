@@ -1,0 +1,11 @@
+{% extends 'linker/base.html' %}
+
+{% block content %}
+<h3>{{project.title}}: </h3>
+Origin: {{project.origin}}<br />
+SHA: {{project.latest_sha}}<br />
+Content:
+<blockquote>
+  {{project.content}}
+</blockquote>
+{% endblock content %}
