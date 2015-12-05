@@ -4,7 +4,7 @@
 <h3>Projects: </h3>
   <ul>
   {% for p in projects %}
-    <li>{{p.title}}</li>
+    <a href="{% url 'linker:show' id=p.id%}"><li>{{p.title}}</li></a>
   {% endfor %}
   </ul>
 {% endblock content %}
