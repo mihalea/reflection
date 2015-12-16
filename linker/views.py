@@ -1,15 +1,22 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from .models import Project
+from .forms import ProjectForm
 
-# Create your views here.
 def index(request):
     projects = Project.objects.all()
     return render(request, 'linker/index.html', {"projects" : projects})
 
 def add(request):
-    return render(request, 'linker/add.html')
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
 
-def add_action(request):
-    return HttpResponse("ADD")
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            repository = form.cleaned_data['repository']
+            return redirect('linker:index')
+    else:
+        form = ProjectForm()
+
+    return render(request, 'linker/add.html', {'form': form})
