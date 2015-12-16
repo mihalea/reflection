@@ -1,0 +1,13 @@
+{% extends 'linker/base.html' %}
+
+{% block content %}
+<form method="post">
+  <label for="username">Username: </label>
+  <input type="text" id="username" name="username" />
+
+  <label for="repository">Repository: </label>
+  <input type="text" id="repository" name="repository" />
+
+  <input type="submit" value="Add!" />
+</form>
+{% endblock content %}

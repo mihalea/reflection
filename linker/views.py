@@ -8,6 +8,8 @@ def index(request):
     projects = Project.objects.all()
     return render(request, 'linker/index.html', {"projects" : projects})
 
-def show(request, id):
-    project = get_object_or_404(Project, id=id)
-    return render(request, 'linker/show.html', {"project" : project})
+def add(request):
+    return render(request, 'linker/add.html')
+
+def add_action(request):
+    return HttpResponse("ADD")

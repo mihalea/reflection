@@ -4,7 +4,14 @@
 <h3>Projects: </h3>
   <ul>
   {% for p in projects %}
-    <a href="{% url 'linker:show' id=p.id%}"><li>{{p.title}}</li></a>
+    <li>
+    {% if p.watched %}
+      [x]
+    {% else %}
+      [ ]
+    {% endif %}
+    {{p.title}}
+    </li>
   {% endfor %}
   </ul>
 {% endblock content %}
