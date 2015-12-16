@@ -5,12 +5,7 @@
   <ul>
   {% for p in projects %}
     <li>
-    {% if p.watched %}
-      [x]
-    {% else %}
-      [ ]
-    {% endif %}
-    {{p.title}}
+    {{p.repository}}
     </li>
   {% endfor %}
   </ul>

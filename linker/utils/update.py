@@ -12,7 +12,9 @@ def add(username, repository):
 	try:
 		project = Project.objects.get(username=username, repository=repository)
 		#Project already exists therefore we don't proceed
-		log.info("Project already exists! " + username + ":" + repository)
+		msg = "Project already exists: " + username + "/" + repository
+		log.debug(msg)
+		return msg
 	except ObjectDoesNotExist:
 		#Project does not exist already and it can be added
 		try:
@@ -22,7 +24,7 @@ def add(username, repository):
 				username = username,
 				repository = repository,
 				readme = readme)
-			log.info("Added a new project! " + username + ":" + repository)
+			log.info("Added a new project! " + username + "/" + repository)
 		except ValueError as err:
 			log.info(err)
 
@@ -32,20 +34,33 @@ def add(username, repository):
 		log.error("Multiple projects with the same pair returned. This should" +
 			"not happen")
 
-def get_metadata(username, repository, getReadMe=True):
+def update(username, repository):
+	try:
+		project = Project.objects.get(username=username, repository=repository)
+		sha, readme = get_metadata(username, repository)
+
+		if sha != project.sha:
+			project.sha = sha
+			project.readme = readme
+			project.save()
+			log.info("Updated the project " + username + "/" + repository)
+
+		log.debug("Project has not changed: " + username + "/" + repository)
+	except ObjectDoesNotExist:
+		log.warn("Project is not in the database and can't be updated " +
+			username + ":" + repository)
+
+def get_metadata(username, repository):
 	url = "{}repos/{}/{}/readme".format(API_URL, username, repository)
 	headers = {'User-Agent': 'Mihalea/Reflection'}
 	response = requests.get(url, headers)
 	content = json.loads(response.text)
 
 	if not 'sha' in content:
-		raise ValueError("The project " + username + ":" + repository +
+		raise ValueError("The project " + username + "/" + repository +
 		  "could not be found on github")
 
 	sha = content['sha']
 
-	if getReadMe:
-		readme = requests.get(content['download_url'], headers).text
-		return sha, readme
-	else:
-		return sha
+	readme = requests.get(content['download_url'], headers).text
+	return sha, readme
