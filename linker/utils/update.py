@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import user_passes_test
 API_URL = "https://api.github.com/"
 log = logging.getLogger(__name__)
 
+def is_staff(user):
+	return user.is_staff
+
 @user_passes_test(is_staff)
 def add(username, repository):
 	try:
@@ -68,6 +71,3 @@ def get_metadata(username, repository):
 
 	readme = requests.get(content['download_url'], headers).text
 	return sha, readme
-
-def is_staff(user):
-	return user.is_staff
