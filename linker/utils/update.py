@@ -12,7 +12,7 @@ def add(username, repository):
 	try:
 		project = Project.objects.get(username=username, repository=repository)
 		#Project already exists therefore we don't proceed
-		print("Project already exists!")
+		log.info("Project already exists! " + username + ":" + repository)
 	except ObjectDoesNotExist:
 		#Project does not exist already and it can be added
 		try:
@@ -22,24 +22,30 @@ def add(username, repository):
 				username = username,
 				repository = repository,
 				readme = readme)
+			log.info("Added a new project! " + username + ":" + repository)
 		except ValueError as err:
-			log.info("The provided username:repository could not be found")
+			log.info(err)
 
 	except MultipleObjectsReturned:
 		#An error has ocurred and duplicates have been generated.
 		#Further inspection needed
-		print("THIS SHOULD NOT OCCUR")
+		log.error("Multiple projects with the same pair returned. This should" +
+			"not happen")
 
-def get_metadata(username, repository):
+def get_metadata(username, repository, getReadMe=True):
 	url = "{}repos/{}/{}/readme".format(API_URL, username, repository)
 	headers = {'User-Agent': 'Mihalea/Reflection'}
 	response = requests.get(url, headers)
 	content = json.loads(response.text)
 
 	if not 'sha' in content:
-		raise ValueError("The pair username:repository could not be found")
+		raise ValueError("The project " + username + ":" + repository +
+		  "could not be found on github")
 
 	sha = content['sha']
-	readme = requests.get(content['download_url'], headers).text
 
-	return sha, readme
+	if getReadMe:
+		readme = requests.get(content['download_url'], headers).text
+		return sha, readme
+	else:
+		return sha
