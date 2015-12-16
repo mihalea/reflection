@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .models import Project
 from .forms import ProjectForm
+from .utils.update import add as project_add
 
 def index(request):
     projects = Project.objects.all()
@@ -15,7 +16,8 @@ def add(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             repository = form.cleaned_data['repository']
-            return redirect('linker:index')
+            project_add(username, repository)
+            #return redirect('linker:index')
     else:
         form = ProjectForm()
 

@@ -4,6 +4,6 @@ from .models import Project
 
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('repository',)
 
 admin.site.register(Project, ProjectAdmin)
