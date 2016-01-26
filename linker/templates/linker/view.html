@@ -1,0 +1,11 @@
+{% extends 'reflection/base.html' %}
+
+{% block content %}
+<h3>{{project.repository}}: </h3>
+Username: {{project.username}}<br />
+SHA: {{project.sha}}<br />
+Content:
+<blockquote>
+  {{project.readme}}
+</blockquote>
+{% endblock content %}
