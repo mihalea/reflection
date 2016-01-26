@@ -21,5 +21,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^git/', include('linker.urls', namespace='linker')),
-    url(r'^', include('presenter.urls', namespace='presenter')),
+    url(r'^$', include('presenter.urls', namespace='presenter')),
 ]
