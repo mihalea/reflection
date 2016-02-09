@@ -8,7 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 API_URL = "https://api.github.com/"
 log = logging.getLogger(__name__)
 
-def add(username, repository):
+def add(username, repository, image):
+	log.debug("Trying to add new project: {}/{}".format(username, repository))
 	try:
 		project = Project.objects.get(username=username, repository=repository)
 		#Project already exists therefore we don't proceed
@@ -23,7 +24,8 @@ def add(username, repository):
 				sha = sha,
 				username = username,
 				repository = repository,
-				readme = readme)
+				readme = readme,
+				image = image)
 			log.info("Added a new project! " + username + "/" + repository)
 		except ValueError as err:
 			log.info(err)

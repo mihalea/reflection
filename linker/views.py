@@ -19,17 +19,20 @@ def add(request, message=None):
     log.debug("Add dispatchted");
     context = {}
     if request.method == 'POST':
-        form = ProjectForm(request.POST)
-
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
+
             username = form.cleaned_data['username']
             repository = form.cleaned_data['repository']
-            msg = project_add(username, repository)
+            image = request.FILES['image']
+            msg = project_add(username, repository, image)
 
             if msg:
                 context['message'] = msg;
             else:
                 return redirect('linker:index')
+        else:
+            log.debug("Submitted form is not valid")
     else:
         form = ProjectForm()
 

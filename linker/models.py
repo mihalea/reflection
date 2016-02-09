@@ -5,3 +5,4 @@ class Project (models.Model):
     username = models.CharField(max_length=128)
     repository = models.CharField(max_length=128)
     readme = models.TextField(blank=True)
+    image = models.FileField()

@@ -5,15 +5,10 @@
 <strong>{{message}}</strong>
 {% endif %}
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-
-  <label for="username">Username: </label>
-  <input type="text" id="username" name="username" />
-
-  <label for="repository">Repository: </label>
-  <input type="text" id="repository" name="repository" />
-
+  <h1>{{form.errors}}</h1>
+  {{form}}
   <input type="submit" value="Add!" />
 </form>
 {% endblock content %}
