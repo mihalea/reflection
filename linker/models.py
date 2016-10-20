@@ -1,8 +1,49 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
+from django.core.urlresolvers import reverse
+
+from .utils.update import update
+
+
+class ProjectManager(models.Manager):
+    def featured(self):
+        return super(ProjectManager, self).filter(featured=True)
+
+    def not_featured(self):
+        return super(ProjectManager, self).filter(featured=False)
+
 
 class Project (models.Model):
-    sha = models.CharField(max_length=64)
     username = models.CharField(max_length=128)
     repository = models.CharField(max_length=128)
-    readme = models.TextField(blank=True)
-    image = models.FileField()
+    slug = models.SlugField(max_length=64)
+    featured = models.BooleanField(default=False)
+    readme = models.TextField(blank=True, help_text="Please update this on github!")
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    sha = models.CharField(max_length=64, blank=True, editable=False)
+
+    objects = ProjectManager()
+
+    def get_absolute_link(self):
+        return reverse("projects:view", kwargs={"slug": self.slug})
+
+    class Meta:
+        unique_together = ('username', 'repository', )
+
+
+def create_slug(instance):
+    slug = slugify(instance.repository)
+    if Project.objects.filter(slug=slug).exists():
+        slug = "%s-%s" % (slug, instance.id)
+
+    return slug
+
+
+def pre_save_port_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
+    update(instance)
+
+pre_save.connect(pre_save_port_receiver, sender=Project)

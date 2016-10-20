@@ -133,4 +133,7 @@ local_settings.py
 db.sqlite3
 media
 
-reflection/keys.py
+linker/migrations/
+presenter/migrations/
+*.css
+*.css.map

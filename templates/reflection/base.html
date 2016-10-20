@@ -1,22 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {% load compress %}
   {% load staticfiles %}
-  <title>Reflection</title>
+  {% load sass_tags %}
+  <title>{% block title %}Reflection{% endblock %}</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static "reflection/css/base.scss" %}" />
-        {% block styles %}{% endblock %}
-  {% endcompress %}
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Font awesome -->
+  <script src="https://use.fontawesome.com/7eb89895cb.js"></script>
+
+
+  <link href="{% sass_src 'css/base.scss' %}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+  {% block styles %}{% endblock %}
+
 </head>
 <body>
-  {% block content %}{% endblock content %}
-  <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  {% block scripts %}{% endblock %}
+<nav class="navbar navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url "presenter:index" %}">Mircea Mihalea</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {% url "presenter:index" as url %}
+        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Home</a></li>
+
+        <li><a href="#">About me</a></li>
+
+      {% url "projects:index" as url %}
+        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+{% block content %}{% endblock content %}
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

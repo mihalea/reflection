@@ -1,6 +1,13 @@
 from django import forms
 
-class ProjectForm (forms.Form):
-    username = forms.CharField(label="Username")
-    repository = forms.CharField(label="Repository")
-    image = forms.FileField(label='Image')
+from .models import Project
+
+
+class ProjectForm (forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = [
+            "username",
+            "repository",
+            'featured'
+        ]

@@ -6,7 +6,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^git/', include('linker.urls', namespace='linker')),
+    url(r'^projects/', include('linker.urls', namespace='projects')),
     url(r'^', include('presenter.urls', namespace='presenter')),
 ]
 

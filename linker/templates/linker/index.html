@@ -1,12 +1,31 @@
 {% extends 'reflection/base.html' %}
 
+{% block title %}Projects | {{ block.super }}{% endblock %}
+
 {% block content %}
-<h3>Projects: </h3>
-  <ul>
-  {% for p in projects %}
-    <li>
-    {{p.repository}}
-    </li>
-  {% endfor %}
-  </ul>
+  <div class="container">
+    <div class="page-header">
+      <h1>Featured:</h1>
+    </div>
+
+    <div class="row">
+      {% for p in featured %}
+        <div class="col-lg-4">
+          <h3>{{ p.repository }}</h3>
+          {% lorem p%}
+          <a href="{{ p.get_absolute_link }}" class="btn btn-danger">View details</a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="page-header">
+      <h4>More projects:</h4>
+    </div>
+
+    {% for p in not_featured %}
+        <a href="{{ p.get_absolute_link }}">{{ p.repository }}</a>
+        {% lorem p %}
+    {% endfor %}
+  </div>
+
 {% endblock content %}

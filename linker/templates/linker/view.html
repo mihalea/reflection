@@ -1,11 +1,21 @@
 {% extends 'reflection/base.html' %}
+{% load markdown_deux_tags %}
+
+{% block title %}{{ project.repository }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-<h3>{{project.repository}}: </h3>
-Username: {{project.username}}<br />
-SHA: {{project.sha}}<br />
-Content:
-<blockquote>
-  {{project.readme}}
-</blockquote>
+  <div class="container">
+    <div class="page-header">
+      <h1>{{ project.repository }}
+        <small>
+          <a href="http://github.com/{{ project.username }}/{{ project.repository }}" class="pull-right">view on github</a>
+        </small>
+      </h1>
+
+
+    </div>
+
+    {{ project.readme|linebreaks }}
+  </div>
+
 {% endblock content %}

@@ -1,5 +1,32 @@
 {% extends 'reflection/base.html' %}
 
+{% load staticfiles %}
+{% load sass_tags %}
+
+{% block styles %}
+  <link href="{% sass_src 'css/cover.scss' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
 {% block content %}
-<h1>Presenter index</h1>
+  <div class="jumbotron">
+    <div class="container cover">
+      <div class="row">
+        <div class="col-md-4 portrait">
+          <img src="http://placehold.it/275x275" class="img-circle">
+        </div>
+        <div class="col-md-8">
+          <h1>Hello! I'm Mircea Mihalea!</h1>
+          <p>This is a template for a simple marketing or informational website. It includes a large callout called a
+            jumbotron and three supporting pieces of content. Use it as a starting point to create something more
+            unique.</p>
+          <p class="social">
+            <a href="#"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

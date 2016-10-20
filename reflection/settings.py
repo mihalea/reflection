@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
     'linker',
     'presenter',
+    'sass_processor',
+    'markdown_deux'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,6 +81,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
     'compressor.finders.CompressorFinder',
+    'sass_processor.finders.CssFinder',
 )
 
 WSGI_APPLICATION = 'reflection.wsgi.application'

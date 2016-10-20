@@ -1,0 +1,61 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("../img/road.jpeg");
+  background-size: cover;
+
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+/* background picture by Fineas Anton - Twitter and IG: @fineas.anton*/
+.jumbotron {
+  background: transparent;
+  color: #fff;
+  text-shadow: 0.5px 0.5px #000;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  flex: 1 1 auto;
+
+  .cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  img {
+    max-width: 275px;
+    max-height: 275px;
+    width: auto;
+    height: auto;
+  }
+  
+  .portrait {
+    text-align: center;
+  }
+}
+
+.social a{
+  color: white;
+  padding: 0 5px;
+}
+
+.navbar {
+  flex: 0 1 auto;
+  border: 0;
+  padding-top: 55px; //compensating for the border removal
+
+  a:link, a:visited, a:hover, a:active, a:focus {
+    color: #fff;
+  }
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
