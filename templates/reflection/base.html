@@ -6,7 +6,7 @@
 <html>
 <head>
 
-  <title>{% block title %}Reflection{% endblock %}</title>
+  <title>{% block title %}Mihalea{% endblock %}</title>
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -44,11 +44,14 @@
         {% url "projects:index" as url %}
         <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Home</a></li>
 
-        <li><a href="#">About me</a></li>
+        {% url "projects:about" as url %}
+        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">About me</a></li>
 
         {% url "projects:showcase" as url %}
         <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+
+        {% url "projects:contact" as url %}
+        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Contact</a></li>
       </ul>
     </div><!--/.navbar-collapse -->
   </div>

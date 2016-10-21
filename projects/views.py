@@ -14,6 +14,14 @@ def index(request):
     return render(request, 'projects/index.html', {})
 
 
+def about(request):
+    return render(request, 'projects/about.html', {})
+
+
+def contact(request):
+    return render(request, 'projects/contact.html', {})
+
+
 def showcase(request):
     log.debug("Index dispatched")
     context = {
