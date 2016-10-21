@@ -1,8 +1,11 @@
+{% load staticfiles %}
+{% load sass_tags %}
+{% load bootstrap3 %}
+
 <!DOCTYPE html>
 <html>
 <head>
-  {% load staticfiles %}
-  {% load sass_tags %}
+
   <title>{% block title %}Reflection{% endblock %}</title>
 
   <!-- Latest compiled and minified CSS -->
@@ -22,6 +25,8 @@
 
 </head>
 <body>
+{% bootstrap_messages %}
+
 <nav class="navbar navbar-static-top">
   <div class="container">
     <div class="navbar-header">
@@ -41,7 +46,7 @@
 
         <li><a href="#">About me</a></li>
 
-      {% url "projects:showcase" as url %}
+        {% url "projects:showcase" as url %}
         <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Projects</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
