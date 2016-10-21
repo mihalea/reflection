@@ -6,8 +6,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^projects/', include('linker.urls', namespace='projects')),
-    url(r'^', include('presenter.urls', namespace='presenter')),
+    url(r'^', include('projects.urls', namespace='projects')),
 ]
 
 if settings.DEBUG:

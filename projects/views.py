@@ -11,12 +11,16 @@ log = logging.getLogger(__name__)
 
 
 def index(request):
+    return render(request, 'projects/index.html', {})
+
+
+def showcase(request):
     log.debug("Index dispatched")
     context = {
         "featured": Project.objects.featured(),
         "not_featured": Project.objects.not_featured()
     }
-    return render(request, 'linker/index.html', context)
+    return render(request, 'projects/list.html', context)
 
 
 @staff_member_required
@@ -37,7 +41,7 @@ def edit(request, slug):
     context = {
         "form": form
     }
-    return render(request, 'linker/add.html', context)
+    return render(request, 'projects/add.html', context)
 
 
 @staff_member_required
@@ -55,7 +59,7 @@ def add(request):
             log.warning("Submitted form is not valid")
 
     context = {"form": form}
-    return render(request, 'linker/add.html', context)
+    return render(request, 'projects/add.html', context)
 
 
 @staff_member_required
@@ -74,8 +78,8 @@ def update(request):
 
 
 @staff_member_required
-def view(request, slug):
+def details(request, slug):
     log.debug("View dispatched");
     project = get_object_or_404(Project, slug=slug)
     log.debug("Project " + project.username + "/" + project.repository + " has been requested")
-    return render(request, 'linker/view.html', {'project': project})
+    return render(request, 'projects/view.html', {'project': project})

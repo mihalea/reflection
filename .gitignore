@@ -133,7 +133,6 @@ local_settings.py
 db.sqlite3
 media
 
-linker/migrations/
-presenter/migrations/
+projects/migrations/
 *.css
 *.css.map

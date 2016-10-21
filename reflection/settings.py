@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'linker',
-    'presenter',
+    'projects',
     'sass_processor',
     'markdown_deux'
 ]
@@ -152,7 +151,7 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False,
         },
-        'linker': {
+        'projects': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
         },
