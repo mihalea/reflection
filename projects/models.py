@@ -3,6 +3,7 @@ from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
 
+
 from .utils.update import update
 
 
@@ -22,6 +23,10 @@ class Project (models.Model):
     readme = models.TextField(blank=True, help_text="Please update this on github!")
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     sha = models.CharField(max_length=64, blank=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+    download_url = models.URLField(blank=True)
+    language = models.CharField(max_length=128)
+    description = models.TextField(null=True, blank=True)
 
     objects = ProjectManager()
 
@@ -44,6 +49,6 @@ def pre_save_port_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
-    update(instance)
+    update(instance, False)
 
 pre_save.connect(pre_save_port_receiver, sender=Project)
