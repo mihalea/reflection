@@ -82,14 +82,21 @@ body {
 
 .page-header {
   border-color: #efd2d2;
+}
+
+.project {
+  .updated {
+    margin-top: 25px;
+    color: #888;
+  }
 
   .repo {
     font-size: 36px;
     font-weight: lighter;
   }
 
-  .updated {
-    margin-left: 10px;
+  .language {
+    padding-left: 10px;
   }
 
   .github {

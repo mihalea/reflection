@@ -7,11 +7,14 @@
   <div class="container project">
     <div class="page-header">
         <span class="repo">{{ project.repository }}</span>
-        <span class="updated">{{ project.updated_at|date|lower }}</span>
+        <span class="language">{{ project.language }}</span>
+
         <a href="#" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
     </div>
 
     <div class="readme">{{ project.readme|markdown }}</div>
+
+    <span class="updated pull-right">last commit: {{ project.updated_at|date|lower }}</span>
 
   </div>
 
