@@ -55,7 +55,13 @@
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
-{% block content %}{% endblock content %}
+{% block content %}
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted"><i class="fa fa-copyright" aria-hidden="true"></i> Mircea Mihalea 2016</p>
+    </div>
+  </footer>
+{% endblock content %}
 <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
