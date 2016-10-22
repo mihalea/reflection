@@ -4,18 +4,15 @@
 {% block title %}{{ project.repository }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-  <div class="container">
+  <div class="container project">
     <div class="page-header">
-      <h1>{{ project.repository }}
-        <small>
-          <a href="http://github.com/{{ project.username }}/{{ project.repository }}" class="pull-right">view on github</a>
-        </small>
-      </h1>
-
-
+        <span class="repo">{{ project.repository }}</span>
+        <span class="updated">{{ project.updated_at }}</span>
+        <a href="#" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
     </div>
 
-    {{ project.readme|markdown }}
+    <div class="readme">{{ project.readme|markdown }}</div>
+
   </div>
 
 {% endblock content %}

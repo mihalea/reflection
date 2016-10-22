@@ -85,7 +85,6 @@ def update(request):
     return redirect('projects:index')
 
 
-@staff_member_required
 def details(request, slug):
     log.debug("View dispatched");
     project = get_object_or_404(Project, slug=slug)

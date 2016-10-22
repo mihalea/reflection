@@ -8,6 +8,17 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+
+  .project {
+    a:link, a:hover, a:visited, a:active, a:focus {
+      color: firebrick;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #E82929;
+    }
+  }
 }
 
 .footer {
@@ -23,9 +34,14 @@ body {
 .navbar {
   padding-top: 50px;
   background: transparent;
-  border: 0;
+  border: none;
   border-top: 5px solid firebrick;
   font-size: 1.5em;
+  box-shadow: none;
+
+  .navbar-toggle {
+    border: 0;
+  }
 
   a:link, a:visited, a:hover, a:active, a:focus {
     color: #000;
@@ -53,7 +69,16 @@ body {
 .page-header {
   border-color: #efd2d2;
 
-  small > a {
-   // font-size: 0.5em;
+  .repo {
+    font-size: 36px;
+    font-weight: lighter;
+  }
+
+  .updated {
+    margin-left: 10px;
+  }
+
+  .github {
+    line-height: 52px;
   }
 }
