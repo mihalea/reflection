@@ -1,6 +1,6 @@
 {% extends 'reflection/base.html' %}
 
-{% block title %}Projects | {{ block.super }}{% endblock %}
+{% block title %}Projects // {{ block.super }}{% endblock %}
 
 {% block content %}
   <div class="container">
@@ -22,10 +22,12 @@
       <h4>More projects:</h4>
     </div>
 
+    <div class="project">
     {% for p in not_featured %}
         <a href="{{ p.get_absolute_link }}">{{ p.repository }}</a>
         {% lorem p %}
     {% endfor %}
+    </div>
   </div>
 
 {% endblock content %}

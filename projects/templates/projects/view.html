@@ -1,13 +1,13 @@
 {% extends 'reflection/base.html' %}
 {% load markdown_deux_tags %}
 
-{% block title %}{{ project.repository }} | {{ block.super }}{% endblock %}
+{% block title %}{{ project.repository }} // {{ block.super }}{% endblock %}
 
 {% block content %}
   <div class="container project">
     <div class="page-header">
         <span class="repo">{{ project.repository }}</span>
-        <span class="updated">{{ project.updated_at }}</span>
+        <span class="updated">{{ project.updated_at|date|lower }}</span>
         <a href="#" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
     </div>
 
