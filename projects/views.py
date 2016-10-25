@@ -31,7 +31,7 @@ def showcase(request):
     log.debug("Index dispatched")
     context = {
         "featured": Project.objects.featured(),
-        "not_featured": Project.objects.not_featured()
+        "not_featured": Project.objects.not_featured().order_by("updated_at")
     }
     return render(request, 'projects/list.html', context)
 
