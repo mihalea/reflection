@@ -22,12 +22,14 @@
       <h4>More projects:</h4>
     </div>
 
-    <div class="accent-links">
+    <ul class="accent-links">
     {% for p in not_featured %}
+        <li>
         <a href="{{ p.get_absolute_link }}">{{ p.repository }}</a>
-        {% lorem p %}
+        <p>{{ p.description }}</p>
+        </li>
     {% endfor %}
-    </div>
+    </ul>
   </div>
 
   {{ block.super }}

@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.admin.views.decorators import staff_member_required
+from django.conf import settings
 
 import logging
 
@@ -11,7 +12,9 @@ log = logging.getLogger(__name__)
 
 
 def index(request):
-    return render(request, 'projects/index.html', {})
+    return render(request, 'projects/index.html', {
+        "links": settings.LINKS
+    })
 
 
 def about(request):
@@ -19,7 +22,9 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'projects/contact.html', {})
+    return render(request, 'projects/contact.html', {
+        "links": settings.LINKS
+    })
 
 
 def showcase(request):

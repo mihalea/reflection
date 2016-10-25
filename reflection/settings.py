@@ -183,3 +183,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LINKS = {
+    "github": "http://github.com/mihalea",
+    "linkedin": "http://www.linkedin.com/in/mircea-mihalea",
+    "mail": "mailto:mircea@mihalea.ro",
+    "facebook": "http://facebook.com/mihalea.m",
+}
+
