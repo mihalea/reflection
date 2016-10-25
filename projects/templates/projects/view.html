@@ -1,5 +1,6 @@
 {% extends 'reflection/base.html' %}
 {% load markdown_deux_tags %}
+{% load project_extras %}
 
 {% block title %}{{ project.repository }} // {{ block.super }}{% endblock %}
 
@@ -12,7 +13,7 @@
         <a href="http://github.com/{{ project.username }}/{{ project.repository }}" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
     </div>
 
-    <div class="readme">{{ project.readme|markdown }}</div>
+    <div class="readme">{{ project.readme|markdown|responsive }}</div>
 
     <span class="updated pull-right">last commit: {{ project.updated_at|date|lower }}</span>
 
