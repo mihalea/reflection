@@ -26,8 +26,7 @@
     <ul class="accent-links">
     {% for p in not_featured %}
         <li>
-        <a href="{{ p.get_absolute_link }}">{{ p.repository }}</a>
-        <p>{{ p.description }}</p>
+        <p><a href="{{ p.get_absolute_link }}">{{ p.repository }}:</a> {{ p.description }}</p>
         </li>
     {% endfor %}
     </ul>
