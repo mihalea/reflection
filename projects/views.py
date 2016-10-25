@@ -58,6 +58,16 @@ def edit(request, slug):
 
 
 @staff_member_required
+def delete(request, slug):
+    log.debug("Delete dispatched")
+
+    instance = get_object_or_404(Project, slug=slug)
+    instance.delete()
+
+    return redirect("projects:showcase")
+
+
+@staff_member_required
 def add(request):
     log.debug("Add dispatched")
 
