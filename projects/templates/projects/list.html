@@ -1,4 +1,5 @@
 {% extends 'reflection/base.html' %}
+{% load markdown_deux_tags %}
 
 {% block title %}Projects // {{ block.super }}{% endblock %}
 
@@ -12,7 +13,7 @@
       {% for p in featured %}
         <div class="col-lg-4">
           <h3>{{ p.repository }}</h3>
-          {% lorem p%}
+          <span class="accent-links">{{ p.readme | markdown | truncatechars_html:500 }}</span>
           <a href="{{ p.get_absolute_link }}" class="btn btn-danger">View details</a>
         </div>
       {% endfor %}

@@ -2,6 +2,38 @@
 
 {% block title %}About me // {{ block.super }}{% endblock %}
 
-{%  block content %}
-  {{ block.super }}
+{% block content %}
+    <div class="container about accent-links">
+        <h3>Hello! My name is Mircea Mihalea!</h3>
+        <p>I'm passionate programmer and that's why I'm currently studying towards a MEng Computer Science with
+            Distributed Systems and Networks at the University of Southampton, with a graduation date of 2019. Having
+            just started the second year, I have a clear understading of the foundations of the software engineering
+            process, the logical and mathematical foundations of computer science, and how to design and optimise a
+            database.
+        </p>
+        <p>
+
+        <p> But my programming experience is not limited to courseworks and exams, having built several projects
+            using a variety of languages such as <a href="#">C#</a> and <a href="#">Java</a> and a couple of sites using
+            <a href="#">PHP</a> and <a href="#">Python</a>.
+        </p>
+
+        <p>
+            However, I also love building and administering systems, and that's why I've built and managed my own server
+            for the last 5 years. In need of stable distribution, I've opted for Ubuntu Server, but on my personal
+            machines I've gone through a variety of distros to better understand the inner workings of an operating system.
+            As a sidenote, my dotfiles for i3 on ArchLinux can be found <a href="#">here.</a>
+        </p>
+
+        <p>
+            I'm also part of the <a href="http://www.facebook.com/UniSouthamptonER">University of Southampton Efficiency
+            Racing Team</a>, in which we are
+            competing in the Shell Eco-marathon competition with the goal of building an electric car while being as
+            efficient as possible. As part of the powertrain team I'll be helping with coding and optimizing the onboard
+            computer, but as a true petrolhead I won't be limiting myself to that.
+        </p>
+    </div>
+
+
+    {{ block.super }}
 {% endblock %}
