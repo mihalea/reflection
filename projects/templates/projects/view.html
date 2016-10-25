@@ -9,7 +9,7 @@
         <span class="repo">{{ project.repository }}</span>
         <span class="language">{{ project.language }}</span>
 
-        <a href="#" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
+        <a href="http://github.com/{{ project.username }}/{{ project.repository }}" class="github pull-right">GitHub <i class="fa fa-link" aria-hidden="true"></i></a>
     </div>
 
     <div class="readme">{{ project.readme|markdown }}</div>
