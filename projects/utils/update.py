@@ -71,6 +71,8 @@ def get_readme(project):
         raise ValueError("The project {}/{} does not have a readme set".format(project.username, project.repository))
 
     readme = requests.get(project.download_url, headers).text
+
+    readme = readme[readme.find('\n')+1:]
     return readme
 
 
