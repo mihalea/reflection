@@ -17,15 +17,15 @@
 
         <h2>Skills</h2>
         <p> My programming experience is not limited to courseworks and exams, having built several projects
-            using a variety of languages such as <a href="#">C#</a> and <a href="#">Java</a> and a couple of sites using
-            <a href="#">PHP</a> and <a href="#">Python</a>.
+            using a variety of languages such as <a href="{% url 'projects:view' slug='booklibrary'  %}">C#</a> and <a href="{% url 'projects:view' slug='discomatic' %}">Java</a> and a couple of sites using
+            <a href="{% url 'projects:view' slug='object' %}">PHP</a> and <a href="{% url 'projects:view' slug='reflection' %}">Python</a>.
         </p>
 
         <p>
             However, I also love building and administering systems, and that's why I've built and managed my own server
             for the last 5 years. In need of stable distribution, I've opted for Ubuntu Server, but on my personal
             machines I've gone through a variety of distros to better understand the inner workings of an operating system.
-            As a sidenote, my dotfiles for i3 on ArchLinux can be found <a href="#">here.</a>
+            As a sidenote, my dotfiles for i3 on ArchLinux can be found <a href="{% url 'projects:view' slug='discomatic' %}">here.</a>
         </p>
 
         <h2>Hobbies</h2>
