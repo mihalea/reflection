@@ -99,5 +99,9 @@ def add(request):
 def details(request, slug):
     log.debug("View dispatched");
     project = get_object_or_404(Project, slug=slug)
+
+    if not project.readme:
+        return HttpResponseRedirect("http://github.com/%s/%s/" % (project.username, project.repository))
+
     log.debug("Project " + project.username + "/" + project.repository + " has been requested")
     return render(request, 'projects/view.html', {'project': project})
