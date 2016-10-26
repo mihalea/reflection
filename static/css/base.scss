@@ -1,5 +1,6 @@
-/* Sticky footer styles
--------------------------------------------------- */
+$primary-color: #C44D58;
+$accent-color: #53777A;
+
 html {
   position: relative;
   min-height: 100%;
@@ -11,12 +12,12 @@ body {
 
   .accent-links {
     a:link, a:hover, a:visited, a:active, a:focus {
-      color: firebrick;
+      color: $primary-color;
     }
 
     a:hover {
       text-decoration: none;
-      color: #E82929;
+      color: $primary-color;
     }
   }
 }
@@ -35,9 +36,10 @@ body {
   padding-top: 50px;
   background: transparent;
   border: none;
-  border-top: 5px solid firebrick;
+  border-top: 5px solid $primary-color;
   font-size: 1.5em;
   box-shadow: none;
+  font-family: "Raleway", sans-serif;
 
   .navbar-toggle {
     border: 0;
@@ -50,7 +52,7 @@ body {
   .navbar-nav {
     .active {
       a:link, a:hover, a:visited, a:active, a:focus {
-        border-bottom: 3px solid firebrick;
+        border-bottom: 3px solid $primary-color;
         background: transparent;
       }
 
@@ -77,11 +79,15 @@ body {
   .navbar-brand {
     text-shadow: none;
     font-size: 1.5em;
+
+    i {
+      margin-right: 10px;
+    }
   }
 }
 
 .page-header {
-  border-color: #efd2d2;
+  border-color: $accent-color;
 }
 
 .project {
@@ -109,7 +115,7 @@ body {
   padding-top: 20%;
 
   .fa {
-    color: firebrick;;
+    color: $primary-color;;
   }
 }
 
@@ -120,4 +126,8 @@ body {
   p {
     margin-bottom: 25px;
   }
+}
+
+.btn-danger {
+  margin-top: 15px;
 }

@@ -6,61 +6,67 @@
 <html>
 <head>
 
-  <title>{% block title %}Mihalea{% endblock %}</title>
+    <title>{% block title %}Mihalea{% endblock %}</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}"/>
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <!-- Font awesome -->
-  <script src="https://use.fontawesome.com/7eb89895cb.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Font awesome -->
+    <script src="https://use.fontawesome.com/7eb89895cb.js"></script>
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
 
 
-  <link href="{% sass_src 'css/base.scss' %}" rel="stylesheet" type="text/css"/>
-  {% block styles %}{% endblock %}
+    <link href="{% sass_src 'css/base.scss' %}" rel="stylesheet" type="text/css"/>
+    {% block styles %}{% endblock %}
 
 </head>
 <body>
 {% bootstrap_messages %}
 
 <nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url "projects:index" %}">Mircea Mihalea</a>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "projects:index" %}"><i class="fa fa-code"
+                                                                         aria-hidden="true"> </i>Mircea Mihalea</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {% url "projects:index" as url %}
+                <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Home</a></li>
+
+                {% url "projects:about" as url %}
+                <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">About me</a></li>
+
+                {% url "projects:showcase" as url %}
+                <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Projects</a></li>
+
+                {% url "projects:contact" as url %}
+                <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Contact</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        {% url "projects:index" as url %}
-        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Home</a></li>
-
-        {% url "projects:about" as url %}
-        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">About me</a></li>
-
-        {% url "projects:showcase" as url %}
-        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Projects</a></li>
-
-        {% url "projects:contact" as url %}
-        <li {% if url == request.path %}class="active"{% endif %}><a href="{{ url }}">Contact</a></li>
-      </ul>
-    </div><!--/.navbar-collapse -->
-  </div>
 </nav>
 {% block content %}
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted"><i class="fa fa-copyright" aria-hidden="true"></i> Mircea Mihalea 2016</p>
-    </div>
-  </footer>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted"><i class="fa fa-copyright" aria-hidden="true"></i> Mircea Mihalea 2016</p>
+        </div>
+    </footer>
 {% endblock content %}
 <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 <!-- Latest compiled and minified JavaScript -->

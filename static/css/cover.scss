@@ -21,20 +21,22 @@ body {
   margin-bottom: 0px;
   padding-top: 0px;
   flex: 1 1 auto;
-  //text-align: justify;
+  text-align: justify;
 
   .cover {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-  }
 
-  img {
-    max-width: 275px;
-    max-height: 275px;
-    width: auto;
-    height: auto;
+    img {
+      max-width: 275px;
+      max-height: 275px;
+      width: auto;
+      height: auto;
+      border: 2px solid #fff;
+    }
+
   }
 
   .portrait {
@@ -54,11 +56,6 @@ body {
 
   .navbar-nav {
     .active {
-      a:link, a:hover, a:visited, a:active, a:focus {
-        border-bottom: 3px solid firebrick;
-        background: transparent;
-      }
-
       a:hover {
         color: #eee;
       }
@@ -67,10 +64,6 @@ body {
     li {
       a:link, a:hover, a:visited, a:active, a:focus {
         color: #fff;
-        background: transparent;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
       }
 
       a:hover {
