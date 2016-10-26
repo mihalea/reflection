@@ -7,6 +7,7 @@ import logging
 
 from .models import Project
 from .forms import ProjectForm
+from .utils.update import update as update_data
 
 log = logging.getLogger(__name__)
 
@@ -68,6 +69,16 @@ def delete(request, slug):
 
 
 @staff_member_required
+def update(request, slug):
+    log.debug("Update dispatched")
+
+    instance = get_object_or_404(Project, slug=slug)
+    update_data(instance)
+
+    return redirect("projects:view", slug=slug)
+
+
+@staff_member_required
 def add(request):
     log.debug("Add dispatched")
 
@@ -83,21 +94,6 @@ def add(request):
 
     context = {"form": form}
     return render(request, 'projects/add.html', context)
-
-
-@staff_member_required
-def update(request):
-    log.debug("Update dispatched")
-    username = request.GET.get("username")
-    repository = request.GET.get("repository")
-
-    if username and repository:
-        pass
-    else:
-        log.warning("Invalid GET arguments, could not find username" +
-                    " and repository")
-
-    return redirect('projects:index')
 
 
 def details(request, slug):
