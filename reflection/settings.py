@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projects',
     'sass_processor',
-    'markdown_deux',
     'bootstrap3'
 ]
 
