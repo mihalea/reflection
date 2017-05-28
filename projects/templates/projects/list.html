@@ -1,5 +1,5 @@
 {% extends 'reflection/base.html' %}
-{% load markdown_deux_tags %}
+{% load project_extras %}
 
 {% block title %}Projects // {{ block.super }}{% endblock %}
 
@@ -13,7 +13,7 @@
       {% for p in featured %}
         <div class="col-lg-4">
           <h3>{{ p.repository }} <small>{{ p.language | lower }}</small></h3>
-          <span class="accent-links">{{ p.readme | markdown | truncatechars_html:500 | striptags }}</span><br/>
+          <span class="accent-links">{{ p.readme | md | truncatechars_html:500 | striptags }}</span><br/>
           <a href="{{ p.get_absolute_link }}" class="btn btn-danger">View details</a>
         </div>
       {% endfor %}
