@@ -136,4 +136,5 @@ media
 projects/migrations/
 *.css
 *.css.map
+
 secret.py

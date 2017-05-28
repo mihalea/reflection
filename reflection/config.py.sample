@@ -1,0 +1,2 @@
+secret_key = 'debug_secret_key'
+production = False
