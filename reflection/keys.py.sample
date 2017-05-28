@@ -1,5 +1,0 @@
-DB_HOST = "localhost"
-DB_NAME = "reflection"
-DB_USER = "reflection"
-DB_PASS = "password"
-DB_PORT = ""
