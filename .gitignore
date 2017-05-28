@@ -137,3 +137,5 @@ projects/migrations/
 *.css
 *.css.map
 key.txt
+
+reflection/config\.py
