@@ -21,11 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
-SECRET_KEY = secret.KEY
-=======
 SECRET_KEY = config.secret_key
->>>>>>> 3d756db5c1fae587765fa52bf33a8a1416868104
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not config.production
@@ -188,14 +184,11 @@ LINKS = {
     "facebook": "http://facebook.com/mihalea.m",
 }
 
-<<<<<<< HEAD
-=======
-if config.production:
-    X_FRAME_OPTIONS = 'DENY'
-    CSRF_COOKIE_SECURE = True
-    CSRF_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SECURE = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = True
->>>>>>> 3d756db5c1fae587765fa52bf33a8a1416868104
+# if config.production:
+#     X_FRAME_OPTIONS = 'DENY'
+#     CSRF_COOKIE_SECURE = True
+#     CSRF_COOKIE_HTTPONLY = True
+#     SESSION_COOKIE_SECURE = True
+#     SECURE_CONTENT_TYPE_NOSNIFF = True
+#     SECURE_BROWSER_XSS_FILTER = True
+#     SECURE_SSL_REDIRECT = True
