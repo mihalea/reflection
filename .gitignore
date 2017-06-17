@@ -139,4 +139,3 @@ projects/migrations/
 
 config.py
 data/
-config/web.env
