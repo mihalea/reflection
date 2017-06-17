@@ -26,7 +26,7 @@ SECRET_KEY = config.secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not config.production
 
-ALLOWED_HOSTS = ['mihalea.ro']
+ALLOWED_HOSTS = ['www.mihalea.ro', 'mihalea.ro']
 
 
 # Application definition
