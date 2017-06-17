@@ -1,0 +1,23 @@
+version: '3'
+services:
+    nginx:
+        image: nginx:latest
+        container_name: ng
+        ports:
+            - "80:80"
+        volumes:
+            - ./web:/app/web
+            - ./data/static:/app/data/static
+            - ./config/nginx:/etc/nginx/conf.d
+        depends_on:
+            - web
+
+    web:
+        build: .
+        container_name: wb
+        command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn reflection.wsgi -b 0.0.0.0:8000"
+        volumes:
+            - ./web:/app/web
+            - ./data:/app/data
+        expose:
+            - "8000"
