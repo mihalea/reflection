@@ -17,7 +17,11 @@ services:
         build: .
         container_name: wb
         restart: always
-        command: bash -c "python manage.py collectstatic --noinput && python manage.py makemigrations && python manage.py migrate && gunicorn reflection.wsgi -w 2 -b 0.0.0.0:8000 --reload"
+        command: bash -c "python manage.py compilescss && \
+                          python manage.py collectstatic --noinput && \
+                          python manage.py makemigrations && \
+                          python manage.py migrate && \
+                          gunicorn reflection.wsgi -w 2 -b 0.0.0.0:8000 --reload"
         volumes:
             - ./web:/app/web
             - ./data:/app/data
