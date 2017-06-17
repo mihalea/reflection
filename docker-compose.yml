@@ -21,5 +21,7 @@ services:
         volumes:
             - ./web:/app/web
             - ./data:/app/data
+        env_file:
+            - ./config/web.env
         expose:
             - "8000"
