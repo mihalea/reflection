@@ -3,6 +3,7 @@ services:
     nginx:
         image: nginx:latest
         container_name: ng
+        restart: always
         ports:
             - "80:80"
         volumes:
@@ -15,7 +16,8 @@ services:
     web:
         build: .
         container_name: wb
-        command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn reflection.wsgi -b 0.0.0.0:8000"
+        restart: always
+        command: bash -c "python manage.py collectstatic --noinput && python manage.py makemigrations && python manage.py migrate && gunicorn reflection.wsgi -w 2 -b 0.0.0.0:8000 --reload"
         volumes:
             - ./web:/app/web
             - ./data:/app/data
