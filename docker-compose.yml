@@ -10,6 +10,8 @@ services:
             - ./web:/app/web
             - ./data/static:/app/data/static
             - ./config/nginx:/etc/nginx/conf.d
+            - ./data/webroot:/usr/share/nginx/html
+            - /etc/letsencrypt/live/mihalea.ro:/usr/app/certs
         depends_on:
             - web
 
