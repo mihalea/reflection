@@ -3,22 +3,21 @@ services:
     nginx:
         image: nginx:latest
         container_name: ng
-        restart: always
         ports:
             - "80:80"
+            - "443:443"
         volumes:
             - ./web:/app/web
             - ./data/static:/app/data/static
             - ./config/nginx:/etc/nginx/conf.d
             - ./data/webroot:/usr/share/nginx/html
-            - /etc/letsencrypt/live/mihalea.ro:/usr/app/certs
+            - ./config/certs:/app/certs
         depends_on:
             - web
 
     web:
         build: .
         container_name: wb
-        restart: always
         command: bash -c "python manage.py compilescss && 
                           python manage.py collectstatic --noinput && 
                           python manage.py makemigrations && 
